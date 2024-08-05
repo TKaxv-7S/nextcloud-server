@@ -9,6 +9,7 @@ declare(strict_types=1);
 namespace OCA\DAV\Storage;
 
 use OC\Files\Storage\Wrapper\Wrapper;
+use OCP\Files\Storage\ISharedStorage;
 use OCP\Share\IShare;
 
 class PublicShareWrapper extends Wrapper {
@@ -29,7 +30,7 @@ class PublicShareWrapper extends Wrapper {
 	public function getShare(): IShare {
 		$storage = parent::getWrapperStorage();
 		if (method_exists($storage, 'getShare')) {
-			/** @var \OCA\Files_Sharing\SharedStorage $storage */
+			/** @var ISharedStorage $storage */
 			return $storage->getShare();
 		}
 
